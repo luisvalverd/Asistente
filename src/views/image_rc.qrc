@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="Microfono">
+    <file>img/microfon.png</file>
+  </qresource>
+</RCC>
