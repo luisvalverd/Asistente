@@ -18,15 +18,25 @@ class SpeechAssistant():
 
 
 	def speak(self, audio):
-		self.__engine.say(audio)
-		self.__engine.runAndWait()
+		try: 
+			self.__engine.say(audio)
+			self.__engine.runAndWait()
+		except Exception as e:
+			print(e)
 
 	def date(self):
-		self.hour = self.__datetoday.getDatetoday()
-		text = f'hoy es {self.dateTime["weekday"]} {self.dateTime["day"]} de {self.dateTime["month"]} del {self.dateTime["year"]}'
-		speak(text)
+		try: 
+			self.hour = self.__datetoday.getDatetoday()
+			text = f'hoy es {self.dateTime["weekday"]} {self.dateTime["day"]} de {self.dateTime["month"]} del {self.dateTime["year"]}'
+			speak(text)
+		except Exception as e:
+			print(e)
 
 	def timeNow(self):
-		self.hour = self.__datetoday.getHour()
-		text = f'son las, {self.hour}'
-		speak(text)
+		try: 
+			self.hour = self.__datetoday.getHour()
+			text = f'son las, {self.hour["hour"]} y {self.hour["minute"]}'
+			speak(text)
+		except Exception as e:
+			print(e)
+
