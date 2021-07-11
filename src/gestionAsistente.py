@@ -1,6 +1,9 @@
+from components.abrirPagina import abrirPagina
 from database.database import getReuniones, getPalabrasByType
 from components.speechAsistente import SpeechAssistant
 import unicodedata
+from components.listenAsistente import ListenAssistent
+from components.abrirReunion import abrirReunion
 
 """ reconocer voz del usuario """
 
@@ -17,7 +20,22 @@ class Gestion():
 
 		self.palabraReunion = getPalabrasByType('reunion')
 		for i in self.palabraReunion:
-			print(i)
+			if unicodedata.normalize('NFKD', i[1]).encode('ASCII', 'ignore').strip().upper() == unicodedata.normalize('NFKD', query).encode('ASCII', 'ignore').strip().upper():
+				SpeechAssistant().speak('que reunion quiere abrir')
+				reunion = ListenAssistent().listen()
+				SpeechAssistant().speak('abriendo reunion')
+				abrirReunion(str(reunion))
+				break
+
+		self.palabraPagina = getPalabrasByType('pagina')
+		for i in self.palabraPagina:
+			if unicodedata.normalize('NFKD', i[1]).encode('ASCII', 'ignore').strip().upper() == unicodedata.normalize('NFKD', query).encode('ASCII', 'ignore').strip().upper():
+				SpeechAssistant().speak('que pagina quiere abrir')
+				pagina = ListenAssistent().listen()
+				SpeechAssistant().speak('abriendo pagina web')
+				abrirPagina(str(pagina))
+				
+
 
 
 

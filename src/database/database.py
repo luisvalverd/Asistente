@@ -15,7 +15,8 @@ def getReuniones():
 	return reuniones
 
 def getReunionesByName(nombre):
-	reunion = cursor.execute("SELECT * FROM reuniones WHERE nombre = %(nombre)s", {'nombre': nombre})
+	cursor.execute("SELECT * FROM reuniones WHERE nombre = %(nombre)s", {'nombre': nombre})
+	reunion = cursor.fetchall()
 	return reunion
 
 def InserReunion(nombre, url):
@@ -30,6 +31,11 @@ def getPaginas():
 	cursor.execute("SELECT * FROM paginasweb")
 	paginas = cursor.fetchall()
 	return paginas
+
+def getPaginasByName(nombre):
+	cursor.execute("SELECT * FROM paginasweb WHERE nombre = %(nombre)s", {'nombre': nombre})
+	pagina = cursor.fetchall()
+	return pagina
 
 def InsertPagina(nombre, url):
 	cursor.execute("INSERT INTO paginasweb(nombre, url) VALUES (%(nombre)s, %(url)s)", {'nombre': nombre, 'url': url})
