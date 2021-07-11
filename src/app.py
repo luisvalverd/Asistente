@@ -1,4 +1,8 @@
 from importlib import import_module
+<<<<<<< HEAD
+=======
+from PyQt5 import QtWidgets
+>>>>>>> Asistente_1.0.2
 from pyttsx3 import speak
 import sys
 from PyQt5 import uic
@@ -7,7 +11,13 @@ import imp
 from components.speechAsistente import SpeechAssistant
 from components.date import DateToday
 from components.listenAsistente import ListenAssistent
+<<<<<<< HEAD
 from gestionAsistente import Gestion
+=======
+from views.reuniones import Ui_Frame
+from gestionAsistente import Gestion
+from views.paginasWeb import Ui_PaginasWeb
+>>>>>>> Asistente_1.0.2
 
 image = imp.load_source('image_rc.py', r'.\views\image_rc.py')
 
@@ -18,8 +28,18 @@ class App(QMainWindow):
 		uic.loadUi("views\Main.ui", self)
 		self.speak = SpeechAssistant()
 		self.button = self.listenButton
+<<<<<<< HEAD
 
 		self.button.clicked.connect(self.onClick)
+=======
+		self.reunionesB = self.reunionesButton
+		self.paginasB = self.paginasButton
+
+		self.paginasB.clicked.connect(self.gestionPaginasWeb)
+		self.button.clicked.connect(self.onClick)
+		self.reunionesB.clicked.connect(self.gestionReuniones)
+		
+>>>>>>> Asistente_1.0.2
 
 	def onClick(self):
 		try:
@@ -30,6 +50,7 @@ class App(QMainWindow):
 		except Exception as e:
 			print(e)
 
+<<<<<<< HEAD
 
 	def greatings(self):
 		self.timeNow = DateToday().getHour()
@@ -39,6 +60,39 @@ class App(QMainWindow):
 			self.speak.speak('Buenas tardes en que puedo ayudarte?')
 		else:
 			self.speak.speak('Buenas noches en que puedo ayudarte?')
+=======
+	def gestionReuniones(self):
+		try:
+			self.reuniones = QMainWindow()
+			self.ui = Ui_Frame()
+			self.ui.setupUi(self.reuniones)
+			self.reuniones.show()
+
+		except Exception as e:
+			print(e)
+
+	def gestionPaginasWeb(self):
+		try:
+			self.paginas = QMainWindow()
+			self.ui = Ui_PaginasWeb()
+			self.ui.setupUi(self.paginas)
+			self.paginas.show()
+		except Exception as e:
+			print(e)
+
+	def greatings(self):
+		try: 
+			self.timeNow = DateToday().getHour()
+			if int(self.timeNow["hour"]) > 4 and int(self.timeNow["hour"]) < 12:
+				self.speak.speak('Buenos dias en que puedo ayudarte?')
+			elif int(self.timeNow["hour"]) > 12 and int(self.timeNow["hour"]) < 18:
+				self.speak.speak('Buenas tardes en que puedo ayudarte?')
+			else:
+				self.speak.speak('Buenas noches en que puedo ayudarte?')
+		
+		except Exception as e:
+			print(e)
+>>>>>>> Asistente_1.0.2
 
 
 if __name__ == '__main__':
