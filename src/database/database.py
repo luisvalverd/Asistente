@@ -45,3 +45,23 @@ def DeletePagina(nombre):
 	cursor.execute("DELETE FROM reuniones WHERE nombre = %(nombre)s", {'nombre': nombre})
 	pg.commit()
 
+def getAplicaciones():
+	cursor.execute("SELECT * FROM aplicaciones")
+	aplicaciones = cursor.fetchall()
+	return aplicaciones
+
+def getAplicacionByName(nombre):
+	cursor.execute("SELECT * FROM aplicaciones WHERE nombre = %(nombre)s", {'nombre': nombre})
+	aplicacion = cursor.fetchall()
+	return aplicacion
+
+def InsertAplicacion(nombre, ruta):
+	cursor.execute("INSERT INTO aplicaciones(nombre, path) VALUES (%(nombre)s, %(ruta)s)", {'nombre': nombre, 'ruta': ruta})
+	pg.commit()
+
+def DeleteAplicacion(nombre):
+	cursor.execute("DELETE FROM aplicaciones WHERE nombre = %(nombre)s", {'nombre': nombre})
+	pg.commit()
+	
+
+

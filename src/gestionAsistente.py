@@ -1,3 +1,5 @@
+
+from components.abrirAplicacion import abrirAplicacion
 from components.abrirPagina import abrirPagina
 from database.database import getReuniones, getPalabrasByType
 from components.speechAsistente import SpeechAssistant
@@ -23,7 +25,7 @@ class Gestion():
 			if unicodedata.normalize('NFKD', i[1]).encode('ASCII', 'ignore').strip().upper() == unicodedata.normalize('NFKD', query).encode('ASCII', 'ignore').strip().upper():
 				SpeechAssistant().speak('que reunion quiere abrir')
 				reunion = ListenAssistent().listen()
-				SpeechAssistant().speak('abriendo reunion')
+				SpeechAssistant().speak('abriendo reunión')
 				abrirReunion(str(reunion))
 				break
 
@@ -32,9 +34,19 @@ class Gestion():
 			if unicodedata.normalize('NFKD', i[1]).encode('ASCII', 'ignore').strip().upper() == unicodedata.normalize('NFKD', query).encode('ASCII', 'ignore').strip().upper():
 				SpeechAssistant().speak('que pagina quiere abrir')
 				pagina = ListenAssistent().listen()
-				SpeechAssistant().speak('abriendo pagina web')
+				SpeechAssistant().speak('abriendo página web')
 				abrirPagina(str(pagina))
-				
+				break
+		
+		self.palabraAplicacion = getPalabrasByType('aplicacion')
+		for i in self.palabraAplicacion:
+			if unicodedata.normalize('NFKD', i[1]).encode('ASCII', 'ignore').strip().upper() == unicodedata.normalize('NFKD', query).encode('ASCII', 'ignore').strip().upper():
+				SpeechAssistant().speak('que aplicación quiere abrir')
+				aplicacion = ListenAssistent().listen()
+				SpeechAssistant().speak('abriendo aplicación')
+				abrirAplicacion(str(aplicacion))
+
+
 
 
 

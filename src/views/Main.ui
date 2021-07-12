@@ -124,12 +124,25 @@
      <string>Paginas Web</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="aplicacionesButton">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>540</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Aplicaciones</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
   <include location="image_rc.qrc"/>
-  <include location="fondo_rc.qrc"/>
+  <include location="image_rc.qrc"/>
  </resources>
  <connections/>
 </ui>

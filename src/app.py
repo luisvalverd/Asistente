@@ -1,4 +1,5 @@
 from importlib import import_module
+from views.aplicaciones import Ui_Aplicaciones
 from PyQt5 import QtWidgets
 from pyttsx3 import speak
 import sys
@@ -23,10 +24,12 @@ class App(QMainWindow):
 		self.button = self.listenButton
 		self.reunionesB = self.reunionesButton
 		self.paginasB = self.paginasButton
+		self.aplicacionesB = self.aplicacionesButton
 
 		self.paginasB.clicked.connect(self.gestionPaginasWeb)
 		self.button.clicked.connect(self.onClick)
 		self.reunionesB.clicked.connect(self.gestionReuniones)
+		self.aplicacionesB.clicked.connect(self.gestionAplicaciones)
 		
 
 	def onClick(self):
@@ -54,6 +57,15 @@ class App(QMainWindow):
 			self.ui = Ui_PaginasWeb()
 			self.ui.setupUi(self.paginas)
 			self.paginas.show()
+		except Exception as e:
+			print(e)
+
+	def gestionAplicaciones(self):
+		try:
+			self.aplicaciones = QMainWindow()
+			self.ui = Ui_Aplicaciones()
+			self.ui.setupUi(self.aplicaciones)
+			self.aplicaciones.show()
 		except Exception as e:
 			print(e)
 
