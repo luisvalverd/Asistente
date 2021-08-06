@@ -1,0 +1,16 @@
+--------------------
+Date: 3:8:2021
+Time: 16:19
+Phone number: +593994440539
+Message: test Enviar mensaje de De asistente
+--------------------
+Date: 3:8:2021
+Time: 16:22
+Phone number: +593994440539
+Message: Ted Enviar mensaje desde asistente
+--------------------
+Date: 3:8:2021
+Time: 16:24
+Phone number: +593994440539
+Message: Enviar mensaje desde asistente
+--------------------

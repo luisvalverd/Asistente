@@ -46,6 +46,7 @@ class Ui_PaginasWeb(object):
         self.eliminarWeb.setObjectName("eliminarWeb")
         self.eliminarWeb.clicked.connect(self.eliminarPagina)
         
+        # coloca los datos que existen en la base de datos
         for i in getPaginas():
             index = self.tableWidget.rowCount()
             self.tableWidget.setRowCount(index + 1)
@@ -55,6 +56,7 @@ class Ui_PaginasWeb(object):
         self.retranslateUi(PaginasWeb)
         QtCore.QMetaObject.connectSlotsByName(PaginasWeb)
     
+    # añade un nuevo dato a la tabla y lo guarda en la base de datos
     def agregarPagina(self):
         try:
             if self.nombreWeb.text() != '' and self.urlWeb.text() != '':
@@ -74,7 +76,9 @@ class Ui_PaginasWeb(object):
             if not self.tableWidget.currentIndex().isValid():
                 return
 
+            # borra de la base de datos
             DeletePagina(self.tableWidget.currentItem().text())
+            # borra el dato de la tabla
             self.tableWidget.removeRow(self.tableWidget.currentItem().row())
         except Exception as e:
             print(e)

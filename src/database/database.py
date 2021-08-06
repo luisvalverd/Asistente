@@ -42,7 +42,7 @@ def InsertPagina(nombre, url):
 	pg.commit()
 
 def DeletePagina(nombre):
-	cursor.execute("DELETE FROM reuniones WHERE nombre = %(nombre)s", {'nombre': nombre})
+	cursor.execute("DELETE FROM paginasweb WHERE nombre = %(nombre)s", {'nombre': nombre})
 	pg.commit()
 
 def getAplicaciones():
